@@ -20,9 +20,9 @@ namespace DatabaseProject
             }
             Console.WriteLine();
 
-            Console.WriteLine("Please enter a name to add:");
-            string newName = Console.ReadLine() ?? string.Empty;
-            db.AddUserName(newName);
+            //Console.WriteLine("Please enter a name to add:");
+            //string newName = Console.ReadLine() ?? string.Empty;
+            //db.AddUserName(newName);
         }
     }
 }
