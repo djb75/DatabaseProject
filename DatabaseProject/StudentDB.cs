@@ -25,7 +25,7 @@ namespace DatabaseProject
                 connection.ConnectionString = pathStr;
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
-                command.CommandText = "Select name from main.users";
+                command.CommandText = "Select * from Student";
                 var dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
@@ -43,7 +43,7 @@ namespace DatabaseProject
                 connection.ConnectionString = pathStr;
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
-                command.CommandText = "insert into main.users (name) VALUES (@Name)";
+                command.CommandText = "insert into Student (name) VALUES (@Name)";
                 var nameParameter = command.Parameters.Add("@Name", SqliteType.Text);
                 nameParameter.Value = userName;
                 command.ExecuteNonQuery();

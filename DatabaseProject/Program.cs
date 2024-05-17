@@ -7,7 +7,7 @@ namespace DatabaseProject
     {
         static void Main(string[] args)
         {
-            const string dbPath = @"Data Source=C:\Users\david\Downloads\StudentOptions.db;Mode=ReadWrite";
+            const string dbPath = @"Data Source=C:\Users\david\OneDrive\Documents\Programming stuff\SQLite\studentDBtemp.db;Mode=ReadWrite";
 
             Console.WriteLine(dbPath);
             StudentDB db = new(dbPath); //Make db class
