@@ -12,9 +12,9 @@ namespace DatabaseProject
     {
         private string pathStr;
 
-        public StudentDB(string pathStr)
+        public StudentDB(string PathStr)
         {
-            pathStr = pathStr;
+            pathStr = PathStr;
         }
 
         public List<string> GetUserNames()
