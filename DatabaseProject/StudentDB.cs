@@ -36,16 +36,24 @@ namespace DatabaseProject
             return names;
         }
 
-        public void AddUserName(string userName)
+        public void AddUserName(int StudentID, string FirstName, string LastName, string DOB)
         {
             using (SqliteConnection connection = new SqliteConnection())
             {
                 connection.ConnectionString = pathStr;
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
-                command.CommandText = "insert into main.Student (name) VALUES (@Name)";
-                var nameParameter = command.Parameters.Add("@Name", SqliteType.Text);
-                nameParameter.Value = userName;
+                command.CommandText = "insert into main.Student (name) VALUES (@ID, @FirstName, @LastName, @DOB)";
+
+                //Insert StudentID parameter
+                var IDParameter = command.Parameters.Add("@ID", SqliteType.Integer);
+                IDParameter.Value = StudentID;
+
+                //Insert FirstName parameter
+                var firstNameParameter = command.Parameters.Add("@FirstName", SqliteType.Text);
+                firstNameParameter.Value = FirstName;
+
+
                 command.ExecuteNonQuery();
             }
         }
