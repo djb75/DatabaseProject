@@ -20,9 +20,17 @@ namespace DatabaseProject
             }
             Console.WriteLine();
 
-            Console.WriteLine("Please enter a name to add:");
-            string newName = Console.ReadLine() ?? string.Empty;
-            db.AddUserName(newName);
+            string[] fields = ["StudentID: ", "first name: ", "last name: ", "DOB: "];
+
+            string[] parameters = new string[fields.Length];
+
+            foreach (var field in fields)
+            {
+                Console.WriteLine($"Please enter a {field}");
+                parameters.Append(Console.ReadLine() ?? string.Empty);
+            }
+
+            db.AddStudentRecord(parameters);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace DatabaseProject
             return names;
         }
 
-        public void AddUserName(int StudentID, string FirstName, string LastName, string DOB)
+        public void AddStudentRecord(string[] parameters)
         {
             using (SqliteConnection connection = new SqliteConnection())
             {
@@ -47,12 +47,19 @@ namespace DatabaseProject
 
                 //Insert StudentID parameter
                 var IDParameter = command.Parameters.Add("@ID", SqliteType.Integer);
-                IDParameter.Value = StudentID;
+                IDParameter.Value = parameters[0].Parse;    //Convert to an integer
 
                 //Insert FirstName parameter
                 var firstNameParameter = command.Parameters.Add("@FirstName", SqliteType.Text);
-                firstNameParameter.Value = FirstName;
+                firstNameParameter.Value = parameters[1];
 
+                //Insert LastName parameter
+                var lastNameParameter = command.Parameters.Add("@LastName", SqliteType.Text);
+                lastNameParameter.Value = parameters[2];
+
+                //Insert DOB parameter
+                var DOBParameter = command.Parameters.Add("@DOB", SqliteType.Text);
+                DOBParameter.Value = parameters[3];
 
                 command.ExecuteNonQuery();
             }
