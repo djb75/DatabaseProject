@@ -13,7 +13,7 @@ namespace DatabaseProject
             StudentDB db = new(dbPath); //Make db class
 
             var names = db.GetUserNames();
-            Console.WriteLine("User Names:");
+            Console.WriteLine("Students:");
             foreach (var name in names)
             {
                 Console.WriteLine(name);
