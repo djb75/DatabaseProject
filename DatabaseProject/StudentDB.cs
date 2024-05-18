@@ -43,7 +43,7 @@ namespace DatabaseProject
                 connection.ConnectionString = pathStr;
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
-                command.CommandText = "insert into main.Student (name) VALUES (@ID, @FirstName, @LastName, @DOB)";
+                command.CommandText = "insert into main.Student VALUES (@ID, @FirstName, @LastName, @DOB)";
 
                 //Insert StudentID parameter
                 var IDParameter = command.Parameters.Add("@ID", SqliteType.Integer);

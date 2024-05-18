@@ -10,7 +10,7 @@ namespace DatabaseProject
             const string dbPath = @"Data Source=C:\Users\david\Downloads\StudentOptions (1).db;Mode=ReadWrite";
 
             Console.WriteLine(dbPath);
-            StudentDB db = new(dbPath); //Make db class
+            StudentDB db = new(dbPath);
 
             var names = db.GetUserNames();
             Console.WriteLine("Students:");
@@ -26,11 +26,11 @@ namespace DatabaseProject
             string[] parameters = new string[fields.Length];
 
 
-            foreach (var field in fields)
+            for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine($"Please enter a {field}");
+                Console.WriteLine($"Please enter a {fields[i]}");
                 currentParameter = Console.ReadLine();
-                parameters.Append(currentParameter);
+                parameters[i] = currentParameter;
             }
 
             db.AddStudentRecord(parameters);
