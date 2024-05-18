@@ -7,7 +7,7 @@ namespace DatabaseProject
     {
         static void Main(string[] args)
         {
-            const string dbPath = @"Data Source=C:\Users\david\OneDrive\Documents\Programming stuff\SQLite\studentDBtemp.db;Mode=ReadWrite";
+            const string dbPath = @"Data Source=C:\Users\david\Downloads\StudentOptions (1).db;Mode=ReadWrite";
 
             Console.WriteLine(dbPath);
             StudentDB db = new(dbPath); //Make db class
@@ -22,12 +22,15 @@ namespace DatabaseProject
 
             string[] fields = ["StudentID: ", "first name: ", "last name: ", "DOB: "];
 
+            string currentParameter = string.Empty;
             string[] parameters = new string[fields.Length];
+
 
             foreach (var field in fields)
             {
                 Console.WriteLine($"Please enter a {field}");
-                parameters.Append(Console.ReadLine() ?? string.Empty);
+                currentParameter = Console.ReadLine();
+                parameters.Append(currentParameter);
             }
 
             db.AddStudentRecord(parameters);

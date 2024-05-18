@@ -47,7 +47,7 @@ namespace DatabaseProject
 
                 //Insert StudentID parameter
                 var IDParameter = command.Parameters.Add("@ID", SqliteType.Integer);
-                IDParameter.Value = parameters[0].Parse;    //Convert to an integer
+                IDParameter.Value = Int32.Parse(parameters[0]);    //Convert to an integer
 
                 //Insert FirstName parameter
                 var firstNameParameter = command.Parameters.Add("@FirstName", SqliteType.Text);
