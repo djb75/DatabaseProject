@@ -1,10 +1,22 @@
 ﻿//using DatabaseProject.Data;
 using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 namespace DatabaseProject
 {
     internal class Program
     {
+        static void PrintAllStudentRecords(StudentDB db)
+        {
+            var studentRecords = db.GetStudentRecords();
+            Console.WriteLine("Students:");
+            Console.WriteLine("StudentID FirstName LastName DOB");
+            foreach (string[] studentRecord in studentRecords)
+            {
+                Console.WriteLine(string.Join(' ', studentRecord));
+            }
+            Console.WriteLine();
+        }
         static void Main(string[] args)
         {
             const string dbPath = @"Data Source=C:\Users\david\Downloads\StudentOptions (1).db;Mode=ReadWrite";
@@ -12,13 +24,7 @@ namespace DatabaseProject
             Console.WriteLine(dbPath);
             StudentDB db = new(dbPath);
 
-            var names = db.GetUserNames();
-            Console.WriteLine("Students:");
-            foreach (var name in names)
-            {
-                Console.WriteLine(name);
-            }
-            Console.WriteLine();
+            PrintAllStudentRecords(db);
 
             string[] fields = ["StudentID: ", "first name: ", "last name: ", "DOB: "];
 

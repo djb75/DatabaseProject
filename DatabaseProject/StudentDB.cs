@@ -17,9 +17,9 @@ namespace DatabaseProject
             pathStr = PathStr;
         }
 
-        public List<string> GetUserNames()
+        public List<string[]> GetStudentRecords()
         {
-            var names = new List<string>();
+            var studentRecords = new List<string[]>();
             using (SqliteConnection connection = new SqliteConnection())
             {
                 connection.ConnectionString = pathStr;
@@ -29,11 +29,15 @@ namespace DatabaseProject
                 var dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    var name = dataReader.GetString(0);
-                    names.Add(name);
+                    string[] record = new string[4];
+                    record[0] = (dataReader["StudentID"].ToString() ?? string.Empty);
+                    record[1] = (dataReader["FirstName"].ToString() ?? string.Empty);
+                    record[2] = (dataReader["LastName"].ToString() ?? string.Empty);
+                    record[3] = (dataReader["DOB"].ToString() ?? string.Empty);
+                    studentRecords.Add(record);
                 }
             }
-            return names;
+            return studentRecords;
         }
 
         public void AddStudentRecord(string[] parameters)
